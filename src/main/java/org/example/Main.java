@@ -28,11 +28,20 @@ public class Main {
                         .collect(Collectors.toList());
         System.out.println(sortedEvenNumberList);
         try {
-            Files.lines(Path.of("C:\\Users\\Thorsten Thomann\\IdeaProjects" +
+            /*Files.write(Path.of("C:\\Users\\Thorsten Thomann\\IdeaProjects" +
+                    "\\ffm-java-23-2-streamaufgabe\\src\\main\\java\\org\\example" +
+                    "\\students.csv"), Files.lines(Path.of("C:\\Users\\Thorsten Thomann\\IdeaProjects" +
                     "\\ffm-java-23-2-streamaufgabe\\src\\main\\java\\org\\example" +
                     "\\students.csv"))
                     .filter(line->!line.contains("ID"))
                     .filter(line->!line.isBlank())
+                    .sorted()
+                    .collect(Collectors.toList()));*/
+            Files.lines(Path.of("C:\\Users\\Thorsten Thomann\\IdeaProjects" +
+                    "\\ffm-java-23-2-streamaufgabe\\src\\main\\java\\org\\example" +
+                    "\\students.csv"))
+                    .map(s -> s.split(","))
+                    .map(strings -> new Student(strings[1],strings[2],Integer.parseInt(strings[3])))
                     .forEach(System.out::println);
 
         } catch (IOException e) {
